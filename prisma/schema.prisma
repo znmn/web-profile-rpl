@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model admin {
+  id        Int      @id @default(autoincrement())
+  username  String   @db.VarChar(100)
+  email     String   @unique @db.VarChar(100)
+  password  String   @db.VarChar(100)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  posts     post[]
+  galleries gallery[]
+}
+
+model post {
+  id          Int      @id @default(autoincrement())
+  title       String   @db.VarChar(100)
+  image       String   @db.Text
+  content     String   @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdBy   Int
+  admin       admin    @relation(fields: [createdBy], references: [id])
+}
+
+model gallery {
+  id          Int      @id @default(autoincrement())
+  image       String   @db.VarChar(100)
+  description String?  @db.Text
+  createdBy   Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  admin       admin    @relation(fields: [createdBy], references: [id])
+}
+
+model course {
+  id          Int      @id @default(autoincrement())
+  title       String   @db.VarChar(100)
+  image       String   @db.VarChar(144)
+  lab_members lab_members_courses[]
+}
+
+model lab_member {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(100)
+  image     String   @db.VarChar(100)
+  position  String   @db.VarChar(100)
+  courses   lab_members_courses[]
+}
+
+model lab_members_courses {
+  id          Int        @id @default(autoincrement())
+  lab_member  lab_member @relation(fields: [labMemberId], references: [id])
+  course      course     @relation(fields: [courseId], references: [id])
+  labMemberId Int
+  courseId    Int
+}
+
+model setting {
+  id        Int      @id @default(autoincrement())
+}
