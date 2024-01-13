@@ -10,15 +10,10 @@ export async function GET(req: NextRequest) {
 		const session = await getServerSession(options);
 		if (!session) throw new Error("Invalid Session");
 
-		const admin = await getAdmin(session.user.id as string);
-		if (admin.data) return Response.json({ ...fetchedOne, ...admin }, { status: 200 });
-		else throw new Error("Invalid ID");
+		return Response.json({ ...fetchedOne, data: session.user }, { status: 200 });
 	} catch (e: any) {
 		if (e.message === "Invalid Session") {
 			return Response.json({ success: false, message: "You must be Loggged in first" }, { status: 401 });
-		}
-		if (e.message === "Invalid ID") {
-			return Response.json(notFound, { status: 404 });
 		}
 
 		return Response.json(serverError, { status: 500 });
