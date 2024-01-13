@@ -14,6 +14,11 @@ export interface Admins {
 	page?: number;
 }
 
+const passwordRule = {
+	pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{6,}$/,
+	message: "Password must contain at least 6 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character",
+};
+
 export const getAdmin = async (id: number | string): Promise<Admins> => {
 	const data = await prisma.admin.findUnique({
 		where: {
@@ -51,7 +56,9 @@ export const loginAdmin = async (datas: { username: string; password: string }):
 	return output;
 };
 
-export const updateAdminPass = async (id: number | string, password: string, new_password: string) => {
+export const updateAdminPass = async (id: number | string, password: string, new_password: string): Promise<Admins> => {
+	if (!passwordRule.pattern.test(new_password)) throw new Error(passwordRule.message);
+
 	const admin = await prisma.admin.findUnique({
 		where: {
 			id: Number(id),
@@ -70,5 +77,6 @@ export const updateAdminPass = async (id: number | string, password: string, new
 			password: hashed,
 		},
 	});
-	return updatedAdmin;
+
+	return { data: updatedAdmin };
 };
