@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { getAdmin, updateAdminPass, type Admin } from "@/controllers/adminControllers";
+import { updateAdminPass } from "@/controllers/adminControllers";
 import { getServerSession } from "next-auth";
 import { options } from "../../auth/[...nextauth]/options";
 
