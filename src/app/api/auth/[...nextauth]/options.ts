@@ -24,10 +24,10 @@ export const options: AuthOptions = {
 		}),
 	],
 	session: {
-		maxAge: 60 * 60 * 24 * 5, // 5 days
+		maxAge: Number(process.env.SESSION_MAX_AGE) || 60 * 60 * 24 * 5, // env | 5 days
 	},
 	jwt: {
-		maxAge: 60 * 60 * 24 * 5, // 5 days
+		// maxAge: 60 * 60 * 24 * 5, // 5 days
 	},
 	pages: {
 		signIn: "/login",
