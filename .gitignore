@@ -134,3 +134,4 @@ dist
 public/uploaded/*
 *.bak
 prisma/migrations/*
+credentials.json
