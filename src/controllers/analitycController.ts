@@ -74,6 +74,7 @@ export const getReports = async (): Promise<Reports> => {
 		body: JSON.stringify({
 			requests: [
 				{
+					limit: "250000",
 					dateRanges: [
 						{
 							// 1 year ago to today yyyy-mm-dd
@@ -93,6 +94,7 @@ export const getReports = async (): Promise<Reports> => {
 					],
 				},
 				{
+					limit: "250000",
 					dateRanges: [
 						{
 							// 10 years ago to today yyyy-mm-dd if > "2016-01-01" | "2016-01-01" to today
