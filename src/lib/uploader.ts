@@ -1,6 +1,5 @@
 import { join } from "path";
-import { stat, mkdir, writeFile } from "fs/promises";
-import { unlink } from "fs";
+import { stat, mkdir, writeFile, unlink } from "fs/promises";
 import mime from "mime-types";
 
 export class UploadError extends Error {
@@ -64,7 +63,5 @@ export default async function uploader(
 
 export async function deleteFile(path: string) {
 	const filePath = join(process.cwd(), "public", path);
-	return unlink(filePath, (err) => {
-		if (err) return false;
-	});
+	return unlink(filePath);
 }
