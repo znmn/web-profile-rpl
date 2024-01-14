@@ -1,3 +1,5 @@
+import { genGABearerToken } from "@/lib/utilsTs";
+
 interface Row {
 	dimensionValues: { value: string }[];
 	metricValues: { value: string }[];
@@ -56,16 +58,21 @@ const pagePercent = (rows: Row[]): PagePercent[] => {
 };
 
 export const getReports = async (): Promise<Reports> => {
-	const { GA_PROPERTY_ID, GA_BEARER_TOKEN } = process.env;
+	const { GA_PROPERTY_ID } = process.env;
 
 	if (!GA_PROPERTY_ID) throw new Error("GA_PROPERTY_ID not found");
+
+	const GA_BEARER_TOKEN = process.env.GA_BEARER_TOKEN || (await genGABearerToken());
 	if (!GA_BEARER_TOKEN) throw new Error("UNAUTHENTICATED");
 
 	const date10YearsAgo = new Date(new Date().setFullYear(new Date().getFullYear() - 10)),
-		date1YearAgo = new Date(new Date().setFullYear(new Date().getFullYear() - 1)),
+		date1YearNow = new Date(new Date().getFullYear() - 1, 0, 1),
 		dateLimit = new Date("2016-01-01");
 
 	const data = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${GA_PROPERTY_ID}:batchRunReports`, {
+		next: {
+			revalidate: 60 * 60 * 2, // 2 hours
+		},
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -77,8 +84,8 @@ export const getReports = async (): Promise<Reports> => {
 					limit: "250000",
 					dateRanges: [
 						{
-							// 1 year ago to today yyyy-mm-dd
-							startDate: date1YearAgo.toISOString().split("T")[0],
+							// 1 year yyyy-01-01 to today
+							startDate: date1YearNow.toISOString().split("T")[0],
 							endDate: "today",
 						},
 					],
