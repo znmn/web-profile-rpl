@@ -1,0 +1,35 @@
+"use client";
+
+import { useCallback, useEffect, useState } from "react";
+import { NavContent } from "./nav_content";
+import { NavHeader } from "./nav_header";
+import { MenuBtn } from "./menu_btn";
+import useWindow from "@/hooks/useWindow";
+import { Presence } from "../../motion/presence";
+
+export const Navbar = () => {
+  const isMobile = useWindow();
+  const [show, setShow] = useState(false);
+
+  const handleNav = useCallback(() => {
+    setShow(!show);
+  }, [show]);
+
+  useEffect(() => {
+    isMobile ? setShow(false) : setShow(true);
+  }, [isMobile]);
+
+  return (
+    <nav className="px-6 py-6 lg:px-8 lg:py-6 flex flex-col lg:flex-row gap-6 lg:justify-between w-full ">
+      <div className="flex flex-row justify-between ">
+        <NavHeader />
+        {isMobile && <MenuBtn action={handleNav} />}
+      </div>
+      {show && (
+        <Presence>
+          <NavContent />
+        </Presence>
+      )}
+    </nav>
+  );
+};

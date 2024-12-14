@@ -1,0 +1,31 @@
+import Link from "next/link";
+
+type MediaProps = {
+  name: string;
+  iconPath: string;
+  viewBox: string;
+};
+
+export const Media = (props: MediaProps) => {
+  return (
+    <Link
+      href={"/"}
+      className="basis-1/3 px-2 py-2 flex flex-row items-center gap-2 lg:gap- w-full lg:w-fit "
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        x="0px"
+        y="0px"
+        width="20"
+        height="20"
+        viewBox={props.viewBox}
+        fill="white"
+      >
+        <path d={props.iconPath}></path>
+      </svg>
+      <p className="font-normal text-sm lg:text-md text-gray-100">
+        {props.name}
+      </p>
+    </Link>
+  );
+};
