@@ -6,6 +6,8 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Footer } from "@/components/layouts/footer/footer";
 import { Navbar } from "@/components/layouts/navbar/navbar";
+import { ThemeProvider } from "@/utils/context/theme_context";
+import { RootPresence } from "@/components/motion/root_presence";
 
 config.autoAddCss = false;
 
@@ -37,11 +39,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SessionProvider>
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <main className="flex-1 min-h-screen">{children}</main>
-            <Footer />
-          </div>
+          <ThemeProvider>
+            <RootPresence>
+              <Navbar />
+              <main className="flex-1 min-h-screen">{children}</main>
+              <Footer />
+            </RootPresence>
+          </ThemeProvider>
         </SessionProvider>
       </body>
     </html>

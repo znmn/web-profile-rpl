@@ -6,10 +6,13 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "selector",
   theme: {
     extend: {
       colors: {
         primary: "#002C4B",
+        bgLight: "#fff",
+        bgDark: "#00052B",
       },
     },
   },
