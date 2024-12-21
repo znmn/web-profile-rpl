@@ -14,7 +14,7 @@ export const FootDescription = (props: FootDescriptionProps) => {
       <div className="flex flex-row items-center gap-2 ">
         <FontAwesomeIcon icon={props.icon} className="w-4 h-4 text-gray-100" />
 
-        <p className="font-normal text-sm lg:text-md text-gray-200 ">
+        <p className="font-light text-sm lg:text-md text-gray-200 ">
           {props.content}
         </p>
       </div>

@@ -8,7 +8,7 @@ export const Trailing = () => {
     <div className="flex flex-col justify-between gap-4 w-full lg:w-fit h-fit lg:h-full ">
       <div className="flex flex-col gap-2 ">
         <Image src={ryperLogo} alt="RyperLabUnej" width={42} height={42} />
-        <h1 className="font-bold text-2xl lg:text-3xl text-gray-100">
+        <h1 className="font-semibold text-2xl lg:text-3xl text-gray-100">
           Ryper Lab
         </h1>
       </div>
