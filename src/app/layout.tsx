@@ -42,7 +42,9 @@ export default function RootLayout({
           <ThemeProvider>
             <RootPresence>
               <Navbar />
-              <main className="flex-1 min-h-screen">{children}</main>
+              <main className="flex-1 flex flex-col gap-2 md:gap-4 lg:gap-6 min-h-screen">
+                {children}
+              </main>
               {/* <Footer /> */}
             </RootPresence>
           </ThemeProvider>
