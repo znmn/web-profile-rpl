@@ -6,7 +6,7 @@ export const Hero = async () => {
   const data = await getGalleries();
 
   return (
-    <div className="relative flex items-center justify-center w-full h-[450px] md:h-[650px] lg:h-screen overflow-hidden ">
+    <div className="relative p-layout flex items-center justify-center w-full h-[450px] md:h-[650px] lg:h-screen overflow-hidden ">
       <HeroCarousel images={data} />
       <HeroContent />
     </div>

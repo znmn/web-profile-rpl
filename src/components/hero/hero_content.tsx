@@ -4,7 +4,7 @@ import { HeroHeadline } from "./hero_headline";
 
 export const HeroContent = () => {
   return (
-    <div className="flex flex-col items-center gap-4 md:gap-8 max-w-[90%] 2xl:max-w-[75%] z-10 ">
+    <div className="flex flex-col items-center gap-4 md:gap-8 z-10 ">
       <Image
         src={ryperLogo}
         alt="RyperLabUnej"

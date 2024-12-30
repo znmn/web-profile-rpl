@@ -4,7 +4,7 @@
 
 @layer components {
   .p-layout {
-    @apply px-6 lg:px-8;
+    @apply px-6 md:px-10 lg:px-16 xl:px-32;
   }
 
   .color-background {

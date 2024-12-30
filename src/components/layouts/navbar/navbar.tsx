@@ -20,7 +20,7 @@ export const Navbar = () => {
   }, [isMobile]);
 
   return (
-    <nav className="sticky top-0 right-0 left-0 p-layout py-6 lg:py-6 flex flex-col lg:flex-row gap-6 lg:justify-between w-full z-50 bg-bgLight dark:bg-bgDark">
+    <nav className="sticky top-0 right-0 left-0 p-layout py-6 lg:py-8 flex flex-col lg:flex-row gap-6 lg:justify-between w-full z-50 bg-bgLight dark:bg-bgDark">
       <div className="flex flex-row justify-between ">
         <NavHeader />
         {isMobile && <MenuBtn action={handleNav} />}
