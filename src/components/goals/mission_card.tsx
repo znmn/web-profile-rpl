@@ -3,7 +3,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-export const MissionCard = () => {
+type MissionCardProps = {
+  idx: number;
+  title: string;
+  description: string;
+};
+
+export const MissionCard = (props: MissionCardProps) => {
   const [hover, setHover] = useState(false);
 
   return (
@@ -14,12 +20,12 @@ export const MissionCard = () => {
     >
       <div className="px-3 lg:px-6 py-1 group-hover:px-0 group-hover:py-0 rounded-md bg-bgDark dark:bg-bgLight duration-300">
         <h6 className="font-bold text-sm md:text-base lg:text-lg text-lead-color-inverse">
-          1
+          {props.idx}
         </h6>
       </div>
       <div className="flex flex-col gap-2 w-full ">
         <p className="font-meidum text-sm md:text-base lg:text-lg text-moderate-color group-hover:text-gray-200 dark:group-hover:text-gray-800">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, cum.
+          {props.title}
         </p>
 
         {hover && (
@@ -36,9 +42,7 @@ export const MissionCard = () => {
             transition={{ duration: 0.5 }}
             className="font-normal text-xs md:text-sm lg:text-base text-gray-300 dark:text-gray-700"
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores,
-            itaque quia vero sint necessitatibus placeat. Ratione sit ipsam
-            natus est?
+            {props.description}
           </motion.p>
         )}
       </div>
