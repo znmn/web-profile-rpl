@@ -1,3 +1,4 @@
+import { timeFormat } from "@/utils/formatter/time_format";
 import Link from "next/link";
 
 type BlogCardProps = {
@@ -9,10 +10,12 @@ type BlogCardProps = {
 };
 
 export const BlogCard = (props: BlogCardProps) => {
+  const time = timeFormat(props.createdAt);
+
   return (
     <Link
       href={`/blog/${props.slug}`}
-      className="p-4 md:p-6 flex flex-col items-center gap-3 md:gap-4 w-full sm:w-[336px] lg:w-[380px] rounded-2xl border border-bgDark bg-bgLight"
+      className="p-4 md:p-6 flex flex-col items-center gap-3 md:gap-4 w-full sm:w-[336px] lg:w-[380px] rounded-2xl border border-gray-300 bg-bgLight hover:shadow-2xl shadow-bgDark dark:shadow-bgLight duration-300"
     >
       <div className="relative w-full h-[160px] md:h-[180px] lg:h-[200px] rounded-xl overflow-hidden ">
         <img src={props.image} alt="" />
@@ -23,7 +26,7 @@ export const BlogCard = (props: BlogCardProps) => {
           {props.title}
         </h3>
         <h6 className="font-medium text-gray-700 duration-300 text-descriptive-size 2xl:text-lg">
-          {props.createdAt}
+          {time}
         </h6>
         <p className="font-medium text-gray-800 duration-300 text-descriptive-size 2xl:text-lg line-clamp-3">
           {props.content}

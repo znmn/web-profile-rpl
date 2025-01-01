@@ -1,7 +1,7 @@
 type BlogResponse = {
   success: boolean;
   message: string;
-  data: Blog;
+  data?: Blog;
 };
 
 export type Blog = {
@@ -15,7 +15,7 @@ export type Blog = {
   updatedAt: string;
 };
 
-export const getBlog = async (slug: string) => {
+export const getBlog = async (slug: string): Promise<Blog | undefined> => {
   try {
     const res = await fetch(`http://localhost:3000/api/admin/posts/${slug}`);
 
@@ -25,6 +25,6 @@ export const getBlog = async (slug: string) => {
   } catch (e: unknown) {
     console.error(`Failed on Fetch Galleries, error message : ${e}`);
 
-    return null;
+    return undefined;
   }
 };
