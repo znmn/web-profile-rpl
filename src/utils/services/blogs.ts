@@ -1,6 +1,5 @@
+import { fetchApi } from "./fetch_api";
 type BlogResponse = {
-  success: boolean;
-  message: string;
   data: Blog[];
   page: number;
   size: number;
@@ -18,18 +17,10 @@ export type Blog = {
   updatedAt: string;
 };
 
-export const getBlogs = async () => {
-  try {
-    const res = await fetch(
-      "http://localhost:3000/api/admin/posts?limit=10&page=1"
-    );
+export const getBlogs = async (query?: string) => {
+  const queryParams = (query && `&search=${query}`) || "";
 
-    const data: BlogResponse = await res.json();
+  const res = await fetchApi<BlogResponse>(`/posts?page=1${queryParams}`);
 
-    return data.data;
-  } catch (e: unknown) {
-    console.error(`Failed on Fetch Galleries, error message : ${e}`);
-
-    return [];
-  }
+  return res;
 };

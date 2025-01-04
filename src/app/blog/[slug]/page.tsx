@@ -1,4 +1,4 @@
-import { BlogNotFound } from "@/components/detail_blog/blog_not_found";
+import { DetailBlogNotFound } from "@/components/boundary/blog_boundary/detail_blog_not_found";
 import { DetailBlogContent } from "@/components/detail_blog/detail_blog_content";
 import { DetailBlogHeader } from "@/components/detail_blog/detail_blog_header";
 import { getBlog } from "@/utils/services/blog";
@@ -18,7 +18,7 @@ export default async function DetailBlog({
           <DetailBlogContent time={blog!.createdAt} content={blog!.content} />
         </>
       ) : (
-        <BlogNotFound />
+        <DetailBlogNotFound />
       )}
     </div>
   );
