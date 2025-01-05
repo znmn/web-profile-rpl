@@ -17,10 +17,13 @@ export type Blog = {
   updatedAt: string;
 };
 
-export const getBlogs = async (query?: string) => {
+export const getBlogs = async (query?: string, page?: string) => {
   const queryParams = (query && `&search=${query}`) || "";
+  const pageParams = page || "1";
 
-  const res = await fetchApi<BlogResponse>(`/posts?page=1${queryParams}`);
+  const res = await fetchApi<BlogResponse>(
+    `/posts?page=${pageParams}&&${queryParams}`
+  );
 
   return res;
 };
