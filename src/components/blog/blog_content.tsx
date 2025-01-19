@@ -14,6 +14,7 @@ export const BlogContent = async (props: { query?: string; page?: string }) => {
           <BlogNotFound />
         ) : (
           <>
+            {res.size < 1 && <BlogNotFound />}
             <div className="flex flex-col md:flex-row flex-wrap items-center gap-y-4 md:items-start md:justify-between md:gap-y-6 lg:gap-y-10 w-full ">
               {res.data.map((blog, idx) => (
                 <BlogCard
