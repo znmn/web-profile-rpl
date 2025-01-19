@@ -3,6 +3,7 @@ import { ImageContainer } from "./components/container/image_container";
 import ryperLabIntro from "../../../public/RyperLab_Introduction.webp";
 import ryperLabHistory from "../../../public/RyperLab_History.webp";
 import { Structure } from "./components/structure";
+import { Courses } from "./components/courses";
 
 export default function Page() {
   return (
@@ -11,6 +12,7 @@ export default function Page() {
       <ImageContainer image={ryperLabIntro} alt="Logo RyperLabe" />
       <ImageContainer image={ryperLabHistory} alt="Logo RyperLabe" />
       <Structure />
+      <Courses />
     </>
   );
 }
