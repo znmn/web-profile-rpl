@@ -3,17 +3,17 @@ import { DivisionContainer } from "../container/division_container";
 import { DivisionCarousel } from "@/components/carousel/division_carousel";
 import { DivisionComponentProps } from "./type";
 
-export const AdministratorDivision = (props: DivisionComponentProps) => {
+export const PracticeDivision = (props: DivisionComponentProps) => {
   return (
     <DivisionContainer
-      division="BPH"
+      division="Asisten Praktikum"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum
-                dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore"
+                        tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum
+                        dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore"
     >
-      <DivisionCarousel direction="forward">
+      <DivisionCarousel direction="backward">
         {props.content.map((member) => (
           <MemberCard
             key={member.name}

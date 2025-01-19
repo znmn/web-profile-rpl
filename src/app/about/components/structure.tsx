@@ -3,6 +3,8 @@ import { MentorDivision } from "./division/mentor_division";
 import { ErrorBoundary } from "@/components/boundary/error";
 import { MembersNotFound } from "./boundary/members_not_found";
 import { AdministratorDivision } from "./division/administrator_division";
+import { PracticeDivision } from "./division/practice_division";
+import { ResearchDivision } from "./division/research_division";
 
 export const Structure = async () => {
   const res = await getMembers();
@@ -17,7 +19,19 @@ export const Structure = async () => {
           <>
             <MentorDivision content={res.data[0]} />
             <AdministratorDivision
-              content={res.data.filter((member) => member.id <= 10)}
+              content={res.data.filter(
+                (member) => member.id > 1 && member.id <= 7
+              )}
+            />
+            <PracticeDivision
+              content={res.data.filter(
+                (member) => member.id > 7 && member.id <= 10
+              )}
+            />
+            <ResearchDivision
+              content={res.data.filter(
+                (member) => member.id > 10 && member.id <= 12
+              )}
             />
           </>
         )

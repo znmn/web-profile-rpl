@@ -3,10 +3,10 @@ import { DivisionContainer } from "../container/division_container";
 import { DivisionCarousel } from "@/components/carousel/division_carousel";
 import { DivisionComponentProps } from "./type";
 
-export const AdministratorDivision = (props: DivisionComponentProps) => {
+export const ResearchDivision = (props: DivisionComponentProps) => {
   return (
     <DivisionContainer
-      division="BPH"
+      division="Asisten Penelitian"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                 tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur
                 adipiscing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum
