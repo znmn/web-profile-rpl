@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ryperLogo from "../../../public/ryper_logo.svg";
+import ryperLogo from "../../../../../public/ryper_logo.svg";
 import { HeroHeadline } from "./hero_headline";
 
 export const HeroContent = () => {

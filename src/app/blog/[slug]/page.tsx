@@ -1,7 +1,7 @@
-import { DetailBlogNotFound } from "@/components/boundary/blog_boundary/detail_blog_not_found";
-import { DetailBlogContent } from "@/components/detail_blog/detail_blog_content";
-import { DetailBlogHeader } from "@/components/detail_blog/detail_blog_header";
+import { DetailBlogContent } from "@/app/blog/[slug]/components/detail_blog_content";
+import { DetailBlogHeader } from "@/app/blog/[slug]/components/detail_blog_header";
 import { getBlog } from "@/utils/services/blog";
+import { DetailBlogNotFound } from "./components/boundary/detail_blog_not_found";
 
 export default async function DetailBlog({
   params,

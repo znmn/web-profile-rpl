@@ -1,10 +1,10 @@
 import { getMembers } from "@/utils/services/members";
 import { MentorDivision } from "./division/mentor_division";
 import { ErrorBoundary } from "@/components/boundary/error";
-import { MembersNotFound } from "./boundary/members_not_found";
 import { AdministratorDivision } from "./division/administrator_division";
 import { PracticeDivision } from "./division/practice_division";
 import { ResearchDivision } from "./division/research_division";
+import { NotFound } from "@/components/boundary/not_found";
 
 export const Structure = async () => {
   const res = await getMembers();
@@ -14,7 +14,7 @@ export const Structure = async () => {
       <h4 className="font-bold text-lead-size text-lead-color">Struktur Lab</h4>
       {res.success ? (
         res.size < 1 ? (
-          <MembersNotFound />
+          <NotFound message="Data Anggota Lab tidak ditemukan" />
         ) : (
           <>
             <MentorDivision content={res.data[0]} />

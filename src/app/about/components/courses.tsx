@@ -1,7 +1,7 @@
 import { ErrorBoundary } from "@/components/boundary/error";
 import { CoursesCarousel } from "@/components/carousel/courses_carousel";
 import { getCourses } from "@/utils/services/courses";
-import { MembersNotFound } from "./boundary/members_not_found";
+import { NotFound } from "@/components/boundary/not_found";
 
 export const Courses = async () => {
   const res = await getCourses();
@@ -13,7 +13,7 @@ export const Courses = async () => {
       </h4>
       {res.success ? (
         res.size < 1 ? (
-          <MembersNotFound />
+          <NotFound message="Data Kursus tidak ditemukan" />
         ) : (
           <CoursesCarousel content={res.data} />
         )

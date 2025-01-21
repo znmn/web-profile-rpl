@@ -1,5 +1,5 @@
-import { BlogContainer } from "@/components/blog/blog_container";
 import { HeaderPage } from "@/components/container/header_page";
+import { BlogContainer } from "./components/blog_container";
 
 export default function Blog(props: {
   searchParams: { query?: string; page?: string };

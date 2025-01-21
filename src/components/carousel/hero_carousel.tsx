@@ -3,7 +3,6 @@
 import React, { useEffect, useCallback, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Fade from "embla-carousel-fade";
-import styles from "./EmblaCarousel.module.css";
 import { Image } from "@/utils/services/galleries";
 
 export default function HeroCarousel({ images }: { images: Image[] }) {
