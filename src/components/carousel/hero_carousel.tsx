@@ -38,11 +38,11 @@ export default function HeroCarousel({ images }: { images: Image[] }) {
   }, [emblaApi]);
 
   return (
-    <div className="embla absolute w-full h-full ">
-      <div className="embla__viewport h-full overflow-hidden" ref={emblaRef}>
-        <div className="embla__container flex h-full">
+    <div className="absolute w-full h-full ">
+      <div className="h-full overflow-hidden" ref={emblaRef}>
+        <div className="flex h-full">
           {images.map((src, index) => (
-            <div key={index} className="embla__slide min-w-full relative">
+            <div key={index} className="min-w-full relative">
               <img
                 src={src.image}
                 alt={`Slide ${index}`}

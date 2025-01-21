@@ -1,4 +1,6 @@
-type Galleries = {
+import { fetchApi } from "./fetch_api";
+
+type GalleriesResponse = {
   success: boolean;
   message: string;
   data: Image[];
@@ -16,15 +18,7 @@ export type Image = {
 };
 
 export const getGalleries = async () => {
-  try {
-    const res = await fetch("http://localhost:3000/api/admin/galleries");
+  const res = await fetchApi<GalleriesResponse>(`/galleries?limit=100&page=1`);
 
-    const data: Galleries = await res.json();
-
-    return data.data;
-  } catch (e: unknown) {
-    console.error(`Failed on Fetch Galleries, error message : ${e}`);
-
-    return [];
-  }
+  return res;
 };

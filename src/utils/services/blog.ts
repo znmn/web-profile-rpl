@@ -1,3 +1,5 @@
+import { fetchApi } from "./fetch_api";
+
 type BlogResponse = {
   success: boolean;
   message: string;
@@ -14,8 +16,6 @@ export type Blog = {
   createdAt: string;
   updatedAt: string;
 };
-
-import { fetchApi } from "./fetch_api";
 
 export const getBlog = async (slug: string) => {
   const res = await fetchApi<BlogResponse>(`/posts/${slug}`);
