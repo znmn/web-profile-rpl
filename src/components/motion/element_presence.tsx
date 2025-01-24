@@ -30,6 +30,7 @@ export const ElementPresence = ({
         }}
         transition={{
           duration: 0.3,
+          delay: 0.25,
         }}
         initial="hidden"
         animate={mainControls}
