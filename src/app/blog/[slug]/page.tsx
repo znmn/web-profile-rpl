@@ -3,6 +3,7 @@ import { DetailBlogHeader } from "@/app/blog/[slug]/components/detail_blog_heade
 import { getBlog } from "@/utils/services/blog";
 import { DetailBlogNotFound } from "./components/boundary/detail_blog_not_found";
 import { ErrorBoundary } from "@/components/boundary/error";
+import { PagePresence } from "@/components/motion/page_presence";
 
 export default async function DetailBlog({
   params,
@@ -12,22 +13,27 @@ export default async function DetailBlog({
   const res = await getBlog(params.slug);
 
   return (
-    <div className="p-layout p-container flex flex-col items-center gap-4 lg:gap-6 w-full ">
-      {res.success ? (
-        res.data ? (
-          <>
-            <DetailBlogHeader title={res.data!.title} image={res.data!.image} />
-            <DetailBlogContent
-              time={res.data!.createdAt}
-              content={res.data!.content}
-            />
-          </>
+    <PagePresence>
+      <div className="p-layout p-container flex flex-col items-center gap-4 lg:gap-6 w-full ">
+        {res.success ? (
+          res.data ? (
+            <>
+              <DetailBlogHeader
+                title={res.data!.title}
+                image={res.data!.image}
+              />
+              <DetailBlogContent
+                time={res.data!.createdAt}
+                content={res.data!.content}
+              />
+            </>
+          ) : (
+            <DetailBlogNotFound />
+          )
         ) : (
-          <DetailBlogNotFound />
-        )
-      ) : (
-        <ErrorBoundary message={res.message} />
-      )}
-    </div>
+          <ErrorBoundary message={res.message} />
+        )}
+      </div>
+    </PagePresence>
   );
 }

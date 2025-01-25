@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useCallback, useRef } from "react";
+import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import Fade from "embla-carousel-fade";
 import { Image } from "@/utils/services/galleries";
@@ -38,7 +39,19 @@ export default function HeroCarousel({ images }: { images: Image[] }) {
   }, [emblaApi]);
 
   return (
-    <div className="absolute w-full h-full ">
+    <motion.div
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
+      }}
+      transition={{
+        duration: 0.3,
+        delay: 0.25,
+      }}
+      initial="hidden"
+      animate="visible"
+      className="absolute w-full h-full "
+    >
       <div className="h-full overflow-hidden" ref={emblaRef}>
         <div className="flex h-full">
           {images.map((src, index) => (
@@ -53,6 +66,6 @@ export default function HeroCarousel({ images }: { images: Image[] }) {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
