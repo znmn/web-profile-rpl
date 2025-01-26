@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 
 type ElementPresenceProps = {
   width?: "fit" | "full";
@@ -12,17 +12,8 @@ export const ElementPresence = ({
   width = "fit",
   children,
 }: ElementPresenceProps) => {
-  const ref = useRef(null);
-  const isView = useInView(ref, { once: true });
-
-  const mainControls = useAnimation();
-
-  useEffect(() => {
-    isView && mainControls.start("visible");
-  }, [isView]);
-
   return (
-    <div ref={ref} className={`relative w-${width} overflow-hidden`}>
+    <div className={`relative w-${width} overflow-hidden`}>
       <motion.div
         variants={{
           hidden: { opacity: 0, y: 20 },
@@ -33,7 +24,7 @@ export const ElementPresence = ({
           delay: 0.25,
         }}
         initial="hidden"
-        animate={mainControls}
+        whileInView={"visible"}
       >
         {children}
       </motion.div>
