@@ -20,7 +20,7 @@ export const NavItem = (props: NavItemProps) => {
       href={props.route}
       className={`px-5 py-3 flex flex-row lg:justify-start items-center gap-2 w-full lg:w-fit rounded-full group ${
         selected && "bg-primary/90 dark:bg-primary/20"
-      } hover:bg-primary/90 dark:hover:bg-primary/20 duration-300 `}
+      } hover:bg-primary/90 dark:group-hover:bg-primary/20 duration-300 `}
     >
       <FontAwesomeIcon
         icon={props.icon}
