@@ -20,16 +20,18 @@ export const BlogCard = (props: BlogCardProps) => {
     <motion.div
       whileHover={{
         scale: 1.1,
+        boxShadow: "0px 25px 50px -12px rgba(0, 0, 0, 0.25)",
       }}
       whileTap={{
         scale: 0.9,
       }}
       transition={{ duration: 0.3 }}
+      className="rounded-2xl"
     >
       <ElementPresence>
         <Link
           href={`/blog/${props.slug}`}
-          className="p-4 flex flex-col items-center gap-3 md:gap-4 w-full sm:w-[336px] lg:w-[380px] rounded-2xl border border-gray-300 bg-bgLight hover:shadow-2xl shadow-bgDark dark:shadow-bgLight duration-300"
+          className="p-4 flex flex-col items-center gap-3 md:gap-4 w-full sm:w-[336px] lg:w-[380px] rounded-2xl border border-gray-300 bg-bgLight  duration-300"
         >
           <div className="relative w-full h-[200px] rounded-xl overflow-hidden ">
             <img src={props.image} alt="" />

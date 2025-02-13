@@ -7,7 +7,7 @@ export const Mission = () => {
 
   return (
     <GoalContainer title="Misi">
-      <div className="flex flex-col items-center gap-2.5 md:gap-5 w-full ">
+      <div className="flex flex-col items-center gap-2.5 md:gap-5 w-full z-40">
         {missions.map((mission, idx) => (
           <MissionCard
             idx={idx + 1}

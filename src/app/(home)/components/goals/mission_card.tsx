@@ -18,7 +18,7 @@ export const MissionCard = (props: MissionCardProps) => {
       <div
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        className={`group py-3 px-5 md:py-4 md:px-6 flex flex-row  items-center hover:items-start gap-2 md:gap-5 w-full rounded-2xl hover:bg-bgDark dark:hover:bg-bgLight border-[1px] border-bgDark dark:border-bgLight duration-300 `}
+        className={`group py-3 px-5 md:py-4 md:px-6 flex flex-row  items-center hover:items-start gap-2 md:gap-5 w-full rounded-2xl hover:bg-bgDark dark:hover:bg-bgLight border-[1px] border-bgDark dark:border-bgLight duration-300 z-40`}
       >
         <div className="px-3 lg:px-6 py-1 group-hover:px-0 group-hover:py-0 rounded-md bg-bgDark dark:bg-bgLight duration-300">
           <h6 className="font-bold text-sm md:text-base lg:text-lg text-lead-color-inverse">
