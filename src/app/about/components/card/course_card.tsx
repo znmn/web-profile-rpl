@@ -2,13 +2,14 @@ type CourseCardProps = {
   title: string;
   image: string;
   action: () => void;
+  isSelected: boolean;
 };
 
 export const CourseCard = (props: CourseCardProps) => {
   return (
     <div
       onClick={props.action}
-      className="flex-shrink-0 relative flex flex-col items-center justify-end w-[170px] md:w-[270px] h-[190px] md:h-[310px] rounded-2xl overflow-hidden border border-bgDark/45 "
+      className="flex-shrink-0 relative flex flex-col items-center justify-end w-[170px] md:w-[270px] h-[190px] md:h-[310px] rounded-2xl overflow-hidden border border-bgDark/45 cursor-pointer"
     >
       <div className="absolute inset-0 w-full h-full ">
         <img

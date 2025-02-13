@@ -2,7 +2,7 @@
 
 import { CourseCard } from "@/app/about/components/card/course_card";
 import useEmblaCarousel from "embla-carousel-react";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 type CoursesCarouselProps = {
   content: {
@@ -13,15 +13,23 @@ type CoursesCarouselProps = {
 };
 
 export const CoursesCarousel = (props: CoursesCarouselProps) => {
+  const [selectedCourse, setSelectedCourse] = useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
-    align: "start",
+    align: "center",
     dragFree: true,
     startIndex: 0,
   });
 
   useEffect(() => {
     if (!emblaApi) return;
+
+    const onSelect = () => {
+      setSelectedCourse(emblaApi.selectedScrollSnap()); // Menyimpan index yang sedang di tengah
+    };
+
+    emblaApi.on("select", onSelect);
+    onSelect();
   }, [emblaApi]);
 
   const onCardClick = useCallback(
@@ -36,12 +44,13 @@ export const CoursesCarousel = (props: CoursesCarouselProps) => {
   return (
     <div ref={emblaRef} className="w-full overflow-hidden">
       <div className="flex flex-row flex-nowrap gap-3 md:gap-6 w-full ">
-        {props.content.map((course) => (
+        {props.content.map((course, idx) => (
           <CourseCard
             key={course.title}
             title={course.title}
             image={course.image}
-            action={() => onCardClick(course.title)}
+            action={() => onCardClick(idx)}
+            isSelected={idx === selectedCourse}
           />
         ))}
       </div>
