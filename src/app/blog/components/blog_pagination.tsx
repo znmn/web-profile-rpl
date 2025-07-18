@@ -37,17 +37,21 @@ export const BlogPagination = (props: BlogPaginationProps) => {
 
   return (
     <div className="flex flex-row flex-wrap justify-center gap-2 w-full ">
-      <BlogPageBtn action={() => changePage(currentPage - 1)}>
-        <FontAwesomeIcon icon={faChevronLeft} />
-      </BlogPageBtn>
+      {pages > 1 && (
+        <BlogPageBtn action={() => changePage(currentPage - 1)}>
+          <FontAwesomeIcon icon={faChevronLeft} />
+        </BlogPageBtn>
+      )}
       {Array.from({ length: pages }, (_, idx) => (
         <BlogPageBtn key={idx} action={() => changePage(idx + 1)}>
           {idx + 1}
         </BlogPageBtn>
       ))}
-      <BlogPageBtn action={() => changePage(currentPage + 1)}>
-        <FontAwesomeIcon icon={faChevronRight} />
-      </BlogPageBtn>
+      {pages > 1 && (
+        <BlogPageBtn action={() => changePage(currentPage + 1)}>
+          <FontAwesomeIcon icon={faChevronRight} />
+        </BlogPageBtn>
+      )}
     </div>
   );
 };

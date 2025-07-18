@@ -1,6 +1,4 @@
-import { faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { Trailing } from "./trailing";
-import { FootDescription } from "./foot_description";
 import { SocialMedia } from "./social_media";
 import { getSettings } from "@/utils/services/settings";
 
@@ -8,21 +6,20 @@ export const Footer = async () => {
   const contacts = await getSettings();
 
   return (
-    <div className="px-8 py-9 flex flex-col lg:flex-row gap-9 lg:gap-52 w-full min-h-[257px] lg:min-h-fit bg-primary">
-      <Trailing />
-      <FootDescription
-        icon={faLocationDot}
-        label="Lokasi"
-        content="Gedung B. Fakultas Ilmu Komputer"
-      />
-      <FootDescription
-        icon={faEnvelope}
-        label="Kontak Kami"
-        content={contacts![0].value}
-      />
-      <SocialMedia
-        medias={contacts!.filter((contact) => contact.key !== "contact")}
-      />
-    </div>
+    <section className="py-10 bg-primary ">
+      <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+        <div className="flex flex-wrap items-center justify-between">
+          <Trailing />
+
+          <SocialMedia
+            medias={contacts!.filter((contact) => contact.key !== "contact")}
+          />
+
+          <p className="w-full mt-8 text-sm text-center text-gray-100 md:mt-0 md:w-auto md:order-2">
+            © Copyright 2025, All Rights Reserved by RyperLab
+          </p>
+        </div>
+      </div>
+    </section>
   );
 };
