@@ -1,4 +1,6 @@
 import fs from "fs/promises";
+import path from 'path';
+
 
 export interface Settings {
 	contact: string;
@@ -15,7 +17,7 @@ export interface SettingsResponse {
 export const keysSettings: (keyof Settings)[] = ["contact", "youtube", "instagram", "linkedin", "github"];
 
 export const getSettings = async (): Promise<SettingsResponse> => {
-	const settings = await fs.readFile("./src/data/settings.json", "utf8");
+	const settings = await fs.readFile(path.join(process.cwd(), "src/data/settings.json"), "utf8");
 	return { data: JSON.parse(settings) };
 };
 
@@ -32,6 +34,6 @@ export const updateSettings = async (data: Partial<Settings>): Promise<SettingsR
 
 	const settings = await getSettings();
 	const updatedSettings = { ...settings.data, ...dataUpdate };
-	await fs.writeFile("./src/data/settings.json", JSON.stringify(updatedSettings, null, 2), "utf8");
+	await fs.writeFile(path.join(process.cwd(), "src/data/settings.json"), JSON.stringify(updatedSettings, null, 2), "utf8");
 	return { data: updatedSettings };
 };
