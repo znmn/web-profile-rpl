@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { HeroContent } from "./hero_content";
 import HeroCarousel from "../../../../components/carousel/hero_carousel";
 import { getGalleries } from "@/utils/services/galleries";

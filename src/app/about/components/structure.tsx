@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getMembers } from "@/utils/services/members";
 import { MentorDivision } from "./division/mentor_division";
 import { ErrorBoundary } from "@/components/boundary/error";

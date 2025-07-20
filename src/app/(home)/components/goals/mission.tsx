@@ -10,6 +10,7 @@ export const Mission = () => {
       <div className="flex flex-col items-center gap-2.5 md:gap-5 w-full z-40">
         {missions.map((mission, idx) => (
           <MissionCard
+            key={mission.title || idx}
             idx={idx + 1}
             title={mission.title}
             description={mission.description}

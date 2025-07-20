@@ -14,7 +14,7 @@ type contacts = {
 
 export const getSettings = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/admin/settings");
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/admin/settings`);
     const data: data = await res.json();
 
     const array = Object.entries(data.data!).map(([key, value]) => ({

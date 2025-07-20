@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Trailing } from "./trailing";
 import { SocialMedia } from "./social_media";
 import { getSettings } from "@/utils/services/settings";
@@ -12,7 +14,7 @@ export const Footer = async () => {
           <Trailing />
 
           <SocialMedia
-            medias={contacts!.filter((contact) => contact.key !== "contact")}
+            medias={(contacts || []).filter((contact) => contact.key !== "contact")}
           />
 
           <p className="w-full mt-8 text-sm text-center text-gray-100 md:mt-0 md:w-auto md:order-2">
