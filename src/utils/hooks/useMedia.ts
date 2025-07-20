@@ -3,6 +3,12 @@ export const useMedia = (media: { key: string; value: string }) => {
   let iconPath: string | null;
 
   switch (media.key) {
+    case "contact":
+      link = `mailto:${media.value}`;
+      iconPath =
+        "M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4V8.99l8 6.99 8-6.99V18z";
+      
+      break;
     case "youtube":
       link = `https://www.youtube.com/${media.value}`;
       iconPath =
