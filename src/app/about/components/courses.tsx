@@ -8,7 +8,7 @@ export const Courses = async () => {
   const res = await getCourses();
 
   return (
-    <ElementPresence>
+    <ElementPresence width="full">
       <div className="p-layout p-container flex flex-col items-center gap-6 md:gap-8 lg:gap-10 ">
         <h4 className="font-bold text-lead-size text-lead-color">
           Mata Kuliah Terafiliasi
